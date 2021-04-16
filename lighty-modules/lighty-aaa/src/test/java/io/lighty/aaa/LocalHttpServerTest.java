@@ -8,7 +8,6 @@
 package io.lighty.aaa;
 
 import io.lighty.server.LightyServerBuilder;
-import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import javax.servlet.Servlet;
 import org.eclipse.jetty.server.Server;
@@ -21,6 +20,7 @@ import org.testng.annotations.Test;
 public class LocalHttpServerTest {
 
     private static final String TEST_SERVLET = "TestServlet";
+    private static final String DEFAULT_LOCALHOST = "127.0.0.1";
 
     @Mock
     Servlet servlet;
@@ -32,7 +32,7 @@ public class LocalHttpServerTest {
 
     @Test
     public void initLocalHttpServerTest() throws Exception {
-        InetSocketAddress socketAddress = new InetSocketAddress(InetAddress.getLocalHost(), 8888);
+        InetSocketAddress socketAddress = new InetSocketAddress(DEFAULT_LOCALHOST, 8888);
         LightyServerBuilder serverBuilder = new LightyServerBuilder(socketAddress);
         Server server = serverBuilder.build();
         LocalHttpServer localHttpServer = new LocalHttpServer(serverBuilder);

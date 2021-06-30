@@ -11,6 +11,7 @@ package io.lighty.modules.gnmi.connector.gnoi.session.api;
 import io.lighty.modules.gnmi.connector.gnoi.invokers.api.GnoiCertInvoker;
 import io.lighty.modules.gnmi.connector.gnoi.invokers.api.GnoiFileInvoker;
 import io.lighty.modules.gnmi.connector.gnoi.invokers.api.GnoiOsInvoker;
+import io.lighty.modules.gnmi.connector.gnoi.invokers.api.GnoiSonicInvoker;
 import io.lighty.modules.gnmi.connector.gnoi.invokers.api.GnoiSystemInvoker;
 
 public interface GnoiSession {
@@ -23,5 +24,7 @@ public interface GnoiSession {
     GnoiSystemInvoker getSystemInvoker();
 
     GnoiOsInvoker getOsInvoker();
+
+    GnoiSonicInvoker getSonicInvoker();
 
 }

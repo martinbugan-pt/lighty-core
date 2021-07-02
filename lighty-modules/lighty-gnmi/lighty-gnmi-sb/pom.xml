@@ -70,12 +70,6 @@
             <artifactId>aaa-encrypt-service</artifactId>
         </dependency>
         <dependency>
-            <!--FIXME move encryption service from netconf-sb - we do not need whole netconf here-->
-            <groupId>io.lighty.modules</groupId>
-            <artifactId>lighty-netconf-sb</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <scope>test</scope>

@@ -64,6 +64,15 @@
             <artifactId>iana-if-type</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.opendaylight.aaa</groupId>
+            <artifactId>aaa-encrypt-service</artifactId>
+            <scope>compile</scope>
+        </dependency>
 
     </dependencies>
 </project>

@@ -18,9 +18,9 @@ import org.opendaylight.yang.gen.v1.urn.lighty.gnmi.certificate.storage.rev21050
 
 public interface CertificationStorageService {
 
-    @NonNull ListenableFuture<? extends CommitInfo> writeCertificates(AddKeystoreCertificateInput input);
+    @NonNull ListenableFuture<CommitInfo> writeCertificates(AddKeystoreCertificateInput input);
 
-    @NonNull ListenableFuture<? extends CommitInfo> removeCertificates(RemoveKeystoreCertificateInput input);
+    @NonNull ListenableFuture<CommitInfo> removeCertificates(RemoveKeystoreCertificateInput input);
 
     @NonNull ListenableFuture<Optional<Keystore>> readCertificate(String keystoreId);
 

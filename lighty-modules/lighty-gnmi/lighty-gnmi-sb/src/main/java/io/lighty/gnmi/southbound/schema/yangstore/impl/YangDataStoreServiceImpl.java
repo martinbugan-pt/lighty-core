@@ -42,7 +42,7 @@ public class YangDataStoreServiceImpl implements YangDataStoreService {
     }
 
     @Override
-    public ListenableFuture<? extends CommitInfo> addYangModel(final String modelName, final String modelVersion,
+    public ListenableFuture<CommitInfo> addYangModel(final String modelName, final String modelVersion,
                                                                final String modelBody) {
         LOG.debug("Adding yang model {} with version {} to operational datastore", modelName, modelVersion);
         final GnmiYangModelKey gnmiYangModelKey = new GnmiYangModelKey(modelName, new ModuleVersionType(modelVersion));
@@ -56,7 +56,7 @@ public class YangDataStoreServiceImpl implements YangDataStoreService {
                 .withKey(gnmiYangModelKey);
         final WriteTransaction writeTX = dataBroker.newWriteOnlyTransaction();
         writeTX.merge(LogicalDatastoreType.OPERATIONAL, instanceIdentifier, gnmiYangModelBuilder.build());
-        return writeTX.commit();
+        return (ListenableFuture<CommitInfo>) writeTX.commit();
     }
 
     @Override

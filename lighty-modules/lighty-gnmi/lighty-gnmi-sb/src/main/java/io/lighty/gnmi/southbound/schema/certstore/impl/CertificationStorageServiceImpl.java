@@ -36,7 +36,7 @@ public class CertificationStorageServiceImpl implements CertificationStorageServ
     }
 
     @Override
-    public @NonNull ListenableFuture<? extends CommitInfo> writeCertificates(final AddKeystoreCertificateInput input) {
+    public @NonNull ListenableFuture<CommitInfo> writeCertificates(final AddKeystoreCertificateInput input) {
         final Keystore keystore = new KeystoreBuilder()
                 .setKeystoreId(input.getKeystoreId())
                 .setClientKey(this.encryptionService.encrypt(input.getClientKey()))
@@ -47,15 +47,15 @@ public class CertificationStorageServiceImpl implements CertificationStorageServ
 
         final WriteTransaction writeTX = this.dataBroker.newWriteOnlyTransaction();
         writeTX.merge(LogicalDatastoreType.OPERATIONAL, getKeystoreII(input.getKeystoreId()), keystore);
-        return writeTX.commit();
+        return (ListenableFuture<CommitInfo>) writeTX.commit();
     }
 
     @Override
-    public @NonNull ListenableFuture<? extends CommitInfo> removeCertificates(
+    public @NonNull ListenableFuture<CommitInfo> removeCertificates(
             final RemoveKeystoreCertificateInput input) {
         final WriteTransaction writeTransaction = this.dataBroker.newWriteOnlyTransaction();
         writeTransaction.delete(LogicalDatastoreType.OPERATIONAL, getKeystoreII(input.getKeystoreId()));
-        return writeTransaction.commit();
+        return (ListenableFuture<CommitInfo>) writeTransaction.commit();
     }
 
     @Override

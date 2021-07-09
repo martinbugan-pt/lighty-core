@@ -11,9 +11,12 @@ package io.lighty.modules.gnmi.simulatordevice.gnoi;
 import gnoi.os.OSGrpc;
 import gnoi.os.Os;
 import io.grpc.stub.StreamObserver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class GnoiOSService extends OSGrpc.OSImplBase {
 
+    private static final Logger LOG = LoggerFactory.getLogger(GnoiOSService.class);
 
     @Override
     public StreamObserver<Os.InstallRequest> install(final StreamObserver<Os.InstallResponse> responseObserver) {
@@ -58,7 +61,7 @@ public class GnoiOSService extends OSGrpc.OSImplBase {
 
             @Override
             public void onError(final Throwable throwable) {
-
+                responseObserver.onError(throwable);
             }
 
             @Override

@@ -28,7 +28,7 @@ public interface YangDataStoreService {
      * @param modelBody content of the yang file
      * @return future result
      */
-    ListenableFuture<? extends CommitInfo> addYangModel(String modelName, String modelVersion, String modelBody);
+    ListenableFuture<CommitInfo> addYangModel(String modelName, String modelVersion, String modelBody);
 
 
     /**
